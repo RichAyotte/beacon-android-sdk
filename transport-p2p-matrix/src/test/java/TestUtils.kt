@@ -1,7 +1,7 @@
 
 import androidx.annotation.IntRange
-import it.tezosx.octezconnect.core.data.P2pPeer
-import it.tezosx.octezconnect.core.internal.utils.toHexString
+import io.tezos.octezconnect.core.data.P2pPeer
+import io.tezos.octezconnect.core.internal.utils.toHexString
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onEach
 

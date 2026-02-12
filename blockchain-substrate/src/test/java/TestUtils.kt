@@ -1,13 +1,13 @@
 
-import it.tezosx.octezconnect.blockchain.substrate.data.SubstrateAccount
-import it.tezosx.octezconnect.blockchain.substrate.data.SubstrateAppMetadata
-import it.tezosx.octezconnect.blockchain.substrate.data.SubstrateNetwork
-import it.tezosx.octezconnect.blockchain.substrate.data.SubstratePermission
-import it.tezosx.octezconnect.blockchain.substrate.message.request.PermissionSubstrateRequest
-import it.tezosx.octezconnect.blockchain.substrate.message.response.PermissionSubstrateResponse
-import it.tezosx.octezconnect.core.data.Connection
-import it.tezosx.octezconnect.core.internal.blockchain.MockBlockchain
-import it.tezosx.octezconnect.core.internal.utils.failWith
+import io.tezos.octezconnect.blockchain.substrate.data.SubstrateAccount
+import io.tezos.octezconnect.blockchain.substrate.data.SubstrateAppMetadata
+import io.tezos.octezconnect.blockchain.substrate.data.SubstrateNetwork
+import io.tezos.octezconnect.blockchain.substrate.data.SubstratePermission
+import io.tezos.octezconnect.blockchain.substrate.message.request.PermissionSubstrateRequest
+import io.tezos.octezconnect.blockchain.substrate.message.response.PermissionSubstrateResponse
+import io.tezos.octezconnect.core.data.Connection
+import io.tezos.octezconnect.core.internal.blockchain.MockBlockchain
+import io.tezos.octezconnect.core.internal.utils.failWith
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject

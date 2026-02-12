@@ -1,7 +1,7 @@
-package it.tezosx.octezconnect.build
+package io.tezos.octezconnect.build
 
 object Android {
-    const val namespace = "it.tezosx.octezconnect"
+    const val namespace = "io.tezos.octezconnect"
     const val compileSdk = 35
     const val minSdk = 21
     const val targetSdk = 35

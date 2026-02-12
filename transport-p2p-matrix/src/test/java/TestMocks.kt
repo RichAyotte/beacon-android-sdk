@@ -1,15 +1,15 @@
 
 import android.content.Context
 import io.mockk.*
-import it.tezosx.octezconnect.core.internal.BeaconSdk
-import it.tezosx.octezconnect.core.internal.blockchain.BlockchainRegistry
-import it.tezosx.octezconnect.core.internal.blockchain.MockBlockchain
-import it.tezosx.octezconnect.core.internal.data.BeaconApplication
-import it.tezosx.octezconnect.core.internal.di.DependencyRegistry
-import it.tezosx.octezconnect.core.internal.utils.currentTimestamp
-import it.tezosx.octezconnect.core.internal.utils.logDebug
-import it.tezosx.octezconnect.core.internal.utils.logError
-import it.tezosx.octezconnect.core.internal.utils.logInfo
+import io.tezos.octezconnect.core.internal.BeaconSdk
+import io.tezos.octezconnect.core.internal.blockchain.BlockchainRegistry
+import io.tezos.octezconnect.core.internal.blockchain.MockBlockchain
+import io.tezos.octezconnect.core.internal.data.BeaconApplication
+import io.tezos.octezconnect.core.internal.di.DependencyRegistry
+import io.tezos.octezconnect.core.internal.utils.currentTimestamp
+import io.tezos.octezconnect.core.internal.utils.logDebug
+import io.tezos.octezconnect.core.internal.utils.logError
+import io.tezos.octezconnect.core.internal.utils.logInfo
 
 // -- class --
 
@@ -47,7 +47,7 @@ internal fun mockDependencyRegistry(): DependencyRegistry =
     }
 
 internal fun mockLog() {
-    mockkStatic("it.tezosx.octezconnect.core.internal.utils.LogKt")
+    mockkStatic("io.tezos.octezconnect.core.internal.utils.LogKt")
 
     every { logInfo(any(), any(), any()) } answers {
         println("[INFO] ${firstArg<String>()}: ${secondArg<String>()}")
@@ -63,6 +63,6 @@ internal fun mockLog() {
 }
 
 internal fun mockTime(currentTimeMillis: Long = 1) {
-    mockkStatic("it.tezosx.octezconnect.core.internal.utils.TimeKt")
+    mockkStatic("io.tezos.octezconnect.core.internal.utils.TimeKt")
     every { currentTimestamp() } returns currentTimeMillis
 }

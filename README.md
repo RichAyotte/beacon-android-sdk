@@ -18,14 +18,14 @@ The `Octez Connect Android SDK` provides Android developers with tools useful fo
 
 To add `Octez Connect Android SDK` into your project:
 
-  1. Make sure [Maven Central](https://mvnrepository.com/repos/central) (or your configured repository) is included in your root `build.gradle` file:
+  1. Make sure the [JitPack](https://jitpack.io/) repository is included in your root `build.gradle` file:
 
   #### Groovy
   ```groovy
   allprojects {
     repositories {
       ...
-      mavenCentral()
+      maven { url 'https://jitpack.io' }
     }
   }
   ```
@@ -35,7 +35,7 @@ To add `Octez Connect Android SDK` into your project:
   allprojects {
     repositories {
       ...
-      mavenCentral()
+      maven("https://jitpack.io")
     }
   }
   ```
@@ -48,23 +48,23 @@ To add `Octez Connect Android SDK` into your project:
     def octezConnectVersion = "x.y.z"
 
     // REQUIRED, core
-    implementation "it.tezosx:octez-connect-core:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:core:$octezConnectVersion"
 
     // optional, client-dapp
-    implementation "it.tezosx:octez-connect-client-dapp:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:client-dapp:$octezConnectVersion"
   
     // optional, client-wallet
-    implementation "it.tezosx:octez-connect-client-wallet:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:client-wallet:$octezConnectVersion"
     // optional, client-wallet-compat
-    implementation "it.tezosx:octez-connect-client-wallet-compat:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:client-wallet-compat:$octezConnectVersion"
   
     // optional, blockchain-substrate
-    implementation "it.tezosx:octez-connect-blockchain-substrate:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:blockchain-substrate:$octezConnectVersion"
     // optional, blockchain-tezos
-    implementation "it.tezosx:octez-connect-blockchain-tezos:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:blockchain-tezos:$octezConnectVersion"
   
     // optional, transport-p2p-matrix
-    implementation "it.tezosx:octez-connect-transport-p2p-matrix:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:transport-p2p-matrix:$octezConnectVersion"
   
     // REQUIRED
     def jna_version = "x.y.z"
@@ -79,23 +79,23 @@ To add `Octez Connect Android SDK` into your project:
     val octezConnectVersion = "x.y.z"
   
     // REQUIRED, core
-    implementation("it.tezosx:octez-connect-core:$octezConnectVersion")
+    implementation("com.github.trilitech.octez.connect-android-sdk:core:$octezConnectVersion")
 
     // optional, client-dapp
-    implementation("it.tezosx:octez-connect-client-dapp:$octezConnectVersion")
+    implementation("com.github.trilitech.octez.connect-android-sdk:client-dapp:$octezConnectVersion")
   
     // optional, client-wallet
-    implementation("it.tezosx:octez-connect-client-wallet:$octezConnectVersion")
+    implementation("com.github.trilitech.octez.connect-android-sdk:client-wallet:$octezConnectVersion")
     // optional, client-wallet-compat
-    implementation("it.tezosx:octez-connect-client-wallet-compat:$octezConnectVersion")
+    implementation("com.github.trilitech.octez.connect-android-sdk:client-wallet-compat:$octezConnectVersion")
   
     // optional, blockchain-substrate
-    implementation("it.tezosx:octez-connect-blockchain-substrate:$octezConnectVersion")
+    implementation("com.github.trilitech.octez.connect-android-sdk:blockchain-substrate:$octezConnectVersion")
     // optional, blockchain-tezos
-    implementation("it.tezosx:octez-connect-blockchain-tezos:$octezConnectVersion")
+    implementation("com.github.trilitech.octez.connect-android-sdk:blockchain-tezos:$octezConnectVersion")
   
     // optional, transport-p2p-matrix
-    implementation("it.tezosx:octez-connect-transport-p2p-matrix:$octezConnectVersion")
+    implementation("com.github.trilitech.octez.connect-android-sdk:transport-p2p-matrix:$octezConnectVersion")
   
     // REQUIRED
     val jnaVersion = "x.y.z"
@@ -123,8 +123,8 @@ See the list of known issues and how to fix them if you run into problems after 
     ```groovy
     def withoutJna = { exclude group: "net.java.dev.jna" }
     
-    implementation "it.tezosx:octez-connect-core:$octezConnectVersion", withoutJna
-    implementation "it.tezosx:octez-connect-client-wallet:$octezConnectVersion", withoutJna 
+    implementation "com.github.trilitech.octez.connect-android-sdk:core:$octezConnectVersion", withoutJna
+    implementation "com.github.trilitech.octez.connect-android-sdk:client-wallet:$octezConnectVersion", withoutJna 
     ...
   
     def jna_version = "5.9.0"
@@ -138,8 +138,8 @@ See the list of known issues and how to fix them if you run into problems after 
         exclude(group = "net.java.dev.jna")
     }
     
-    implementation("it.tezosx:octez-connect-core:$octezConnectVersion") { excludeJna() }
-    implementation("it.tezosx:octez-connect-client-wallet:$octezConnectVersion") { excludeJna() }
+    implementation("com.github.trilitech.octez.connect-android-sdk:core:$octezConnectVersion") { excludeJna() }
+    implementation("com.github.trilitech.octez.connect-android-sdk:client-wallet:$octezConnectVersion") { excludeJna() }
     ...
     
     val jnaVersion = "5.9.0"
@@ -154,10 +154,10 @@ The snippets below show how to quickly setup a wallet listening for incoming Oct
 ### Create a wallet client and listen for incoming requests
 
 ```kotlin
-import it.tezosx.octezconnect.blockchain.substrate.substrate
-import it.tezosx.octezconnect.blockchain.tezos.tezos
-import it.tezosx.octezconnect.client.wallet.BeaconWalletClient
-import it.tezosx.octezconnect.transport.p2p.matrix.p2pMatrix
+import io.tezos.octezconnect.blockchain.substrate.substrate
+import io.tezos.octezconnect.blockchain.tezos.tezos
+import io.tezos.octezconnect.client.wallet.BeaconWalletClient
+import io.tezos.octezconnect.transport.p2p.matrix.p2pMatrix
 
 class MainActivity : AppCompatActivity() {
   lateinit var client: BeaconWalletClient
@@ -245,10 +245,10 @@ For more examples or examples of how to use the SDK without coroutines or in Jav
 ### Create a wallet client and listen for incoming requests
 
 ```kotlin
-import it.tezosx.octezconnect.blockchain.substrate.substrate
-import it.tezosx.octezconnect.blockchain.tezos.tezos
-import it.tezosx.octezconnect.client.wallet.BeaconWalletClient
-import it.tezosx.octezconnect.transport.p2p.matrix.p2pMatrix
+import io.tezos.octezconnect.blockchain.substrate.substrate
+import io.tezos.octezconnect.blockchain.tezos.tezos
+import io.tezos.octezconnect.client.wallet.BeaconWalletClient
+import io.tezos.octezconnect.transport.p2p.matrix.p2pMatrix
 
 class MainActivity : AppCompatActivity() {
   lateinit var client: BeaconWalletClient

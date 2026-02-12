@@ -37,40 +37,40 @@ dependencies {
     def octezConnectVersion = "x.y.z"
     
     // REQUIRED, core
-    implementation "it.tezosx:octez-connect-core:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:core:$octezConnectVersion"
     
     // Optional modules
-    implementation "it.tezosx:octez-connect-client-dapp:$octezConnectVersion"
-    implementation "it.tezosx:octez-connect-client-wallet:$octezConnectVersion"
-    implementation "it.tezosx:octez-connect-client-wallet-compat:$octezConnectVersion"
-    implementation "it.tezosx:octez-connect-blockchain-tezos:$octezConnectVersion"
-    implementation "it.tezosx:octez-connect-blockchain-substrate:$octezConnectVersion"
-    implementation "it.tezosx:octez-connect-transport-p2p-matrix:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:client-dapp:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:client-wallet:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:client-wallet-compat:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:blockchain-tezos:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:blockchain-substrate:$octezConnectVersion"
+    implementation "com.github.trilitech.octez.connect-android-sdk:transport-p2p-matrix:$octezConnectVersion"
 }
 ```
 
-**Note:** Make sure your `repositories` block includes Maven Central (or the repository where Octez Connect SDK is published):
+**Note:** Make sure your `repositories` block includes JitPack:
 
 ```groovy
 repositories {
-    mavenCentral()
+    maven { url 'https://jitpack.io' }
     // ... other repositories
 }
 ```
 
 ## Package & Import Mapping
 
-All package names have changed from `it.airgap.beaconsdk.*` to `it.tezosx.octezconnect.*`. Update your imports accordingly:
+All package names have changed from `it.airgap.beaconsdk.*` to `io.tezos.octezconnect.*`. Update your imports accordingly:
 
 | Old Package/Import | New Package/Import |
 |-------------------|-------------------|
-| `it.airgap.beaconsdk.core.*` | `it.tezosx.octezconnect.core.*` |
-| `it.airgap.beaconsdk.client.dapp.*` | `it.tezosx.octezconnect.client.dapp.*` |
-| `it.airgap.beaconsdk.client.wallet.*` | `it.tezosx.octezconnect.client.wallet.*` |
-| `it.airgap.beaconsdk.client.wallet.compat.*` | `it.tezosx.octezconnect.client.wallet.compat.*` |
-| `it.airgap.beaconsdk.blockchain.tezos.*` | `it.tezosx.octezconnect.blockchain.tezos.*` |
-| `it.airgap.beaconsdk.blockchain.substrate.*` | `it.tezosx.octezconnect.blockchain.substrate.*` |
-| `it.airgap.beaconsdk.transport.p2p.matrix.*` | `it.tezosx.octezconnect.transport.p2p.matrix.*` |
+| `it.airgap.beaconsdk.core.*` | `io.tezos.octezconnect.core.*` |
+| `it.airgap.beaconsdk.client.dapp.*` | `io.tezos.octezconnect.client.dapp.*` |
+| `it.airgap.beaconsdk.client.wallet.*` | `io.tezos.octezconnect.client.wallet.*` |
+| `it.airgap.beaconsdk.client.wallet.compat.*` | `io.tezos.octezconnect.client.wallet.compat.*` |
+| `it.airgap.beaconsdk.blockchain.tezos.*` | `io.tezos.octezconnect.blockchain.tezos.*` |
+| `it.airgap.beaconsdk.blockchain.substrate.*` | `io.tezos.octezconnect.blockchain.substrate.*` |
+| `it.airgap.beaconsdk.transport.p2p.matrix.*` | `io.tezos.octezconnect.transport.p2p.matrix.*` |
 
 ### Example Import Updates
 
@@ -83,9 +83,9 @@ import it.airgap.beaconsdk.transport.p2p.matrix.p2pMatrix
 
 **After:**
 ```kotlin
-import it.tezosx.octezconnect.client.wallet.BeaconWalletClient
-import it.tezosx.octezconnect.blockchain.tezos.tezos
-import it.tezosx.octezconnect.transport.p2p.matrix.p2pMatrix
+import io.tezos.octezconnect.client.wallet.BeaconWalletClient
+import io.tezos.octezconnect.blockchain.tezos.tezos
+import io.tezos.octezconnect.transport.p2p.matrix.p2pMatrix
 ```
 
 ## Behavior & API Notes
@@ -99,8 +99,9 @@ The SDK now uses **8 Trilitech-hosted Matrix nodes** with `*.octez.io` domains i
 ```kotlin
 p2pMatrix(
     matrixNodes = listOf(
-        "matrix-node-1.octez.io",
-        // ... other nodes
+        "beacon-node-1.octez.io",
+        "beacon-node-2.octez.io",
+        // ... other nodes (beacon-node-1 through beacon-node-8.octez.io)
     )
 )
 ```
@@ -120,7 +121,7 @@ If you have any custom AndroidManifest entries referencing Beacon providers, upd
 **After:**
 ```xml
 <provider
-    android:name="it.tezosx.octezconnect.core.provider.BeaconInitProvider"
+    android:name="io.tezos.octezconnect.core.provider.BeaconInitProvider"
     android:authorities="${applicationId}.octezconnectinitprovider"
     android:exported="false" />
 ```
@@ -150,7 +151,7 @@ The public API surface remains **largely unchanged**. All major classes and func
 2. **Update imports** throughout your codebase:
    - Use your IDE's "Find and Replace" feature
    - Search for: `it.airgap.beaconsdk`
-   - Replace with: `it.tezosx.octezconnect`
+   - Replace with: `io.tezos.octezconnect`
 
 3. **Update AndroidManifest** (if you have custom provider entries)
 

@@ -23,10 +23,10 @@
 # kotlinx.serialization
 -keepattributes *Annotation*, InnerClasses
 -dontnote kotlinx.serialization.SerializationKt
--keep,includedescriptorclasses class it.airgap.beaconsdk.**$$serializer { *; }
--keepclassmembers class it.airgap.beaconsdk.** {
+-keep,includedescriptorclasses class io.tezos.octezconnect.**$$serializer { *; }
+-keepclassmembers class io.tezos.octezconnect.** {
     *** Companion;
 }
--keepclasseswithmembers class it.airgap.beaconsdk.** {
+-keepclasseswithmembers class io.tezos.octezconnect.** {
     kotlinx.serialization.KSerializer serializer(...);
 }

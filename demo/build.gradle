@@ -1,16 +1,16 @@
-import it.tezosx.octezconnect.build.Android
-import it.tezosx.octezconnect.build.Dependencies
-import it.tezosx.octezconnect.build.TestDependencies
+import io.tezos.octezconnect.build.Android
+import io.tezos.octezconnect.build.Dependencies
+import io.tezos.octezconnect.build.TestDependencies
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace "it.tezosx.octezconnectdemo"
+    namespace "io.tezos.octezconnectdemo"
     compileSdk Android.compileSdk
 
     defaultConfig {
-        applicationId "it.tezosx.octezconnectdemo"
+        applicationId "io.tezos.octezconnectdemo"
         minSdk Android.minSdk
         targetSdk Android.targetSdk
         versionCode 1

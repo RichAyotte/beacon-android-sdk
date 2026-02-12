@@ -1,15 +1,15 @@
 import android.content.Context
 import io.mockk.*
-import it.tezosx.octezconnect.blockchain.tezos.Tezos
-import it.tezosx.octezconnect.blockchain.tezos.internal.creator.*
-import it.tezosx.octezconnect.blockchain.tezos.internal.di.ExtendedDependencyRegistry
-import it.tezosx.octezconnect.blockchain.tezos.internal.di.extend
-import it.tezosx.octezconnect.blockchain.tezos.internal.serializer.*
-import it.tezosx.octezconnect.core.internal.BeaconSdk
-import it.tezosx.octezconnect.core.internal.blockchain.BlockchainRegistry
-import it.tezosx.octezconnect.core.internal.data.BeaconApplication
-import it.tezosx.octezconnect.core.internal.di.DependencyRegistry
-import it.tezosx.octezconnect.core.internal.utils.currentTimestamp
+import io.tezos.octezconnect.blockchain.tezos.Tezos
+import io.tezos.octezconnect.blockchain.tezos.internal.creator.*
+import io.tezos.octezconnect.blockchain.tezos.internal.di.ExtendedDependencyRegistry
+import io.tezos.octezconnect.blockchain.tezos.internal.di.extend
+import io.tezos.octezconnect.blockchain.tezos.internal.serializer.*
+import io.tezos.octezconnect.core.internal.BeaconSdk
+import io.tezos.octezconnect.core.internal.blockchain.BlockchainRegistry
+import io.tezos.octezconnect.core.internal.data.BeaconApplication
+import io.tezos.octezconnect.core.internal.di.DependencyRegistry
+import io.tezos.octezconnect.core.internal.utils.currentTimestamp
 
 // -- class --
 
@@ -35,13 +35,13 @@ internal fun mockBeaconSdk(
 // -- static --
 
 internal fun mockTime(currentTimeMillis: Long = 1) {
-    mockkStatic("it.tezosx.octezconnect.core.internal.utils.TimeKt")
+    mockkStatic("io.tezos.octezconnect.core.internal.utils.TimeKt")
     every { currentTimestamp() } returns currentTimeMillis
 }
 
 internal fun mockDependencyRegistry(tezos: Tezos? = null): DependencyRegistry =
     mockkClass(DependencyRegistry::class).also {
-        mockkStatic("it.tezosx.octezconnect.blockchain.tezos.internal.di.ExtendedDependencyRegistryKt")
+        mockkStatic("io.tezos.octezconnect.blockchain.tezos.internal.di.ExtendedDependencyRegistryKt")
         val extendedDependencyRegistry = mockkClass(ExtendedDependencyRegistry::class)
         every { it.extend() } returns extendedDependencyRegistry
 
