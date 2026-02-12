@@ -1,6 +1,6 @@
-import it.airgap.beaconsdk.build.Android
-import it.airgap.beaconsdk.build.Dependencies
-import it.airgap.beaconsdk.build.TestDependencies
+import it.tezosx.octezconnect.build.Android
+import it.tezosx.octezconnect.build.Dependencies
+import it.tezosx.octezconnect.build.TestDependencies
 
 plugins {
     id 'com.android.library'
@@ -70,8 +70,8 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.prodRelease
 
-                groupId = 'it.airgap.beaconsdk'
-                artifactId = 'core'
+                groupId = 'it.tezosx'
+                artifactId = 'octez-connect-core'
                 version = Android.versionName
             }
         }

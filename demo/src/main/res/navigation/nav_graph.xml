@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/walletFragment"
-        android:name="it.airgap.beaconsdkdemo.wallet.WalletFragment"
+        android:name="it.tezosx.octezconnectdemo.wallet.WalletFragment"
         tools:layout="@layout/fragment_wallet"
         android:label="WalletFragment" />
     <fragment
         android:id="@+id/dAppFragment"
-        android:name="it.airgap.beaconsdkdemo.dapp.DAppFragment"
+        android:name="it.tezosx.octezconnectdemo.dapp.DAppFragment"
         tools:layout="@layout/fragment_dapp"
         android:label="DAppFragment" />
 

@@ -1,15 +1,15 @@
 
 import androidx.annotation.IntRange
-import it.airgap.beaconsdk.core.data.*
-import it.airgap.beaconsdk.core.internal.blockchain.MockBlockchain
-import it.airgap.beaconsdk.core.internal.blockchain.message.BlockchainMockRequest
-import it.airgap.beaconsdk.core.internal.blockchain.message.BlockchainMockResponse
-import it.airgap.beaconsdk.core.internal.blockchain.message.PermissionMockRequest
-import it.airgap.beaconsdk.core.internal.blockchain.message.PermissionMockResponse
-import it.airgap.beaconsdk.core.internal.di.DependencyRegistry
-import it.airgap.beaconsdk.core.internal.message.BeaconIncomingConnectionMessage
-import it.airgap.beaconsdk.core.internal.message.VersionedBeaconMessage
-import it.airgap.beaconsdk.core.message.*
+import it.tezosx.octezconnect.core.data.*
+import it.tezosx.octezconnect.core.internal.blockchain.MockBlockchain
+import it.tezosx.octezconnect.core.internal.blockchain.message.BlockchainMockRequest
+import it.tezosx.octezconnect.core.internal.blockchain.message.BlockchainMockResponse
+import it.tezosx.octezconnect.core.internal.blockchain.message.PermissionMockRequest
+import it.tezosx.octezconnect.core.internal.blockchain.message.PermissionMockResponse
+import it.tezosx.octezconnect.core.internal.di.DependencyRegistry
+import it.tezosx.octezconnect.core.internal.message.BeaconIncomingConnectionMessage
+import it.tezosx.octezconnect.core.internal.message.VersionedBeaconMessage
+import it.tezosx.octezconnect.core.message.*
 import kotlinx.coroutines.flow.MutableSharedFlow
 
 // -- extensions --

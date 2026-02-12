@@ -1,15 +1,15 @@
 
-import it.airgap.beaconsdk.blockchain.tezos.data.TezosAccount
-import it.airgap.beaconsdk.blockchain.tezos.data.TezosAppMetadata
-import it.airgap.beaconsdk.blockchain.tezos.data.TezosNetwork
-import it.airgap.beaconsdk.blockchain.tezos.data.TezosNotification
-import it.airgap.beaconsdk.blockchain.tezos.data.TezosPermission
-import it.airgap.beaconsdk.blockchain.tezos.data.TezosThreshold
-import it.airgap.beaconsdk.blockchain.tezos.message.request.PermissionTezosRequest
-import it.airgap.beaconsdk.blockchain.tezos.message.response.PermissionTezosResponse
-import it.airgap.beaconsdk.core.data.Connection
-import it.airgap.beaconsdk.core.internal.blockchain.MockBlockchain
-import it.airgap.beaconsdk.core.internal.utils.failWith
+import it.tezosx.octezconnect.blockchain.tezos.data.TezosAccount
+import it.tezosx.octezconnect.blockchain.tezos.data.TezosAppMetadata
+import it.tezosx.octezconnect.blockchain.tezos.data.TezosNetwork
+import it.tezosx.octezconnect.blockchain.tezos.data.TezosNotification
+import it.tezosx.octezconnect.blockchain.tezos.data.TezosPermission
+import it.tezosx.octezconnect.blockchain.tezos.data.TezosThreshold
+import it.tezosx.octezconnect.blockchain.tezos.message.request.PermissionTezosRequest
+import it.tezosx.octezconnect.blockchain.tezos.message.response.PermissionTezosResponse
+import it.tezosx.octezconnect.core.data.Connection
+import it.tezosx.octezconnect.core.internal.blockchain.MockBlockchain
+import it.tezosx.octezconnect.core.internal.utils.failWith
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject

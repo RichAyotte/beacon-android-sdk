@@ -1,31 +1,31 @@
-# Beacon Android SDK
+# Octez Connect Android SDK
 
-[![stable](https://img.shields.io/github/v/tag/airgap-it/beacon-android-sdk?label=stable&sort=semver)](https://github.com/airgap-it/beacon-android-sdk/releases)
-[![latest](https://img.shields.io/github/v/tag/airgap-it/beacon-android-sdk?color=orange&include_prereleases&label=latest)](https://github.com/airgap-it/beacon-android-sdk/releases)
-[![release](https://img.shields.io/jitpack/v/github/airgap-it/beacon-android-sdk)](https://jitpack.io/#airgap-it/beacon-android-sdk)
-[![documentation](https://img.shields.io/badge/documentation-online-brightgreen.svg)](https://docs.walletbeacon.io/wallet/getting-started/android/installation)
-[![license](https://img.shields.io/github/license/airgap-it/beacon-android-sdk)](https://github.com/airgap-it/beacon-android-sdk/blob/master/LICENSE)
+[![stable](https://img.shields.io/github/v/tag/trilitech/octez-connect-android-sdk?label=stable&sort=semver)](https://github.com/trilitech/octez-connect-android-sdk/releases)
+[![latest](https://img.shields.io/github/v/tag/trilitech/octez-connect-android-sdk?color=orange&include_prereleases&label=latest)](https://github.com/trilitech/octez-connect-android-sdk/releases)
+[![license](https://img.shields.io/github/license/trilitech/octez-connect-android-sdk)](https://github.com/trilitech/octez-connect-android-sdk/blob/master/LICENSE)
 
 > Connect Wallets with dApps on Tezos
 
-[Beacon](https://walletbeacon.io) is an implementation of the wallet interaction standard [tzip-10](https://gitlab.com/tzip/tzip/blob/master/proposals/tzip-10/tzip-10.md) which describes the connection of a dApp with a wallet.
+[Octez Connect](https://github.com/trilitech/octez-connect) is an implementation of the wallet interaction standard [tzip-10](https://gitlab.com/tzip/tzip/blob/master/proposals/tzip-10/tzip-10.md) which describes the connection of a dApp with a wallet.
 
 ## About
 
-The `Beacon Android SDK` provides Android developers with tools useful for setting up communication between native wallets supporting Tezos and dApps that implement [`beacon-sdk`](https://github.com/airgap-it/beacon-sdk).
+The `Octez Connect Android SDK` provides Android developers with tools useful for setting up communication between native wallets supporting Tezos and dApps that implement the Octez Connect protocol.
+
+**Note:** This SDK is a fork of the Beacon Android SDK (formerly maintained by AirGap/Papers). If you're migrating from Beacon Android SDK, see the [Migration Guide](docs/migration-android.md).
 
 ## Installation
 
-To add `Beacon Android SDK` into your project:
+To add `Octez Connect Android SDK` into your project:
 
-  1. Make sure the [JitPack](https://jitpack.io/) repository is included in your root `build.gradle` file:
+  1. Make sure [Maven Central](https://mvnrepository.com/repos/central) (or your configured repository) is included in your root `build.gradle` file:
 
   #### Groovy
   ```groovy
   allprojects {
     repositories {
       ...
-      maven { url 'https://jitpack.io' }
+      mavenCentral()
     }
   }
   ```
@@ -35,7 +35,7 @@ To add `Beacon Android SDK` into your project:
   allprojects {
     repositories {
       ...
-      maven("https://jitpack.io")
+      mavenCentral()
     }
   }
   ```
@@ -45,33 +45,27 @@ To add `Beacon Android SDK` into your project:
   #### Groovy
   ```groovy
   dependencies {
-    def beacon_version = "x.y.z"
+    def octezConnectVersion = "x.y.z"
 
     // REQUIRED, core
-    implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version"
+    implementation "it.tezosx:octez-connect-core:$octezConnectVersion"
 
     // optional, client-dapp
-    implementation "com.github.airgap-it.beacon-android-sdk:client-dapp:$beacon_version"
+    implementation "it.tezosx:octez-connect-client-dapp:$octezConnectVersion"
   
     // optional, client-wallet
-    implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version"
+    implementation "it.tezosx:octez-connect-client-wallet:$octezConnectVersion"
     // optional, client-wallet-compat
-    implementation "com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beacon_version"
+    implementation "it.tezosx:octez-connect-client-wallet-compat:$octezConnectVersion"
   
     // optional, blockchain-substrate
-    implementation "com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beacon_version"
+    implementation "it.tezosx:octez-connect-blockchain-substrate:$octezConnectVersion"
     // optional, blockchain-tezos
-    implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beacon_version"
+    implementation "it.tezosx:octez-connect-blockchain-tezos:$octezConnectVersion"
   
     // optional, transport-p2p-matrix
-    implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beacon_version"
+    implementation "it.tezosx:octez-connect-transport-p2p-matrix:$octezConnectVersion"
   
-    ---
-
-    // alternatively, all modules
-    implementation "com.github.airgap-it:beacon-android-sdk:$beacon_version"
-    
-    
     // REQUIRED
     def jna_version = "x.y.z"
     
@@ -82,36 +76,37 @@ To add `Beacon Android SDK` into your project:
   #### Kotlin
   ```kotlin
   dependencies {
-    val beaconVersion = "x.y.z"
+    val octezConnectVersion = "x.y.z"
   
     // REQUIRED, core
-    implementation("com.github.airgap-it.beacon-android-sdk:core:$beaconVersion")
+    implementation("it.tezosx:octez-connect-core:$octezConnectVersion")
 
     // optional, client-dapp
-    implementation("com.github.airgap-it.beacon-android-sdk:client-dapp:$beaconVersion")
+    implementation("it.tezosx:octez-connect-client-dapp:$octezConnectVersion")
   
     // optional, client-wallet
-    implementation("com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion")
+    implementation("it.tezosx:octez-connect-client-wallet:$octezConnectVersion")
     // optional, client-wallet-compat
-    implementation("com.github.airgap-it.beacon-android-sdk:client-wallet-compat:$beaconVersion")
+    implementation("it.tezosx:octez-connect-client-wallet-compat:$octezConnectVersion")
   
     // optional, blockchain-substrate
-    implementation("com.github.airgap-it.beacon-android-sdk:blockchain-substrate:$beaconVersion")
+    implementation("it.tezosx:octez-connect-blockchain-substrate:$octezConnectVersion")
     // optional, blockchain-tezos
-    implementation("com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beaconVersion")
+    implementation("it.tezosx:octez-connect-blockchain-tezos:$octezConnectVersion")
   
     // optional, transport-p2p-matrix
-    implementation("com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beaconVersion")
+    implementation("it.tezosx:octez-connect-transport-p2p-matrix:$octezConnectVersion")
   
-    ---
-  
-    // alternatively, all modules
-    implementation("com.github.airgap-it:beacon-android-sdk:$beaconVersion")
+    // REQUIRED
+    val jnaVersion = "x.y.z"
+    
+    implementation("net.java.dev.jna:jna:$jnaVersion@aar")
   }
   ```
+
 ### Proguard and R8
 
-`Beacon Android SDK` internally uses various libraries that may require custom ProGuard rules. If you're using ProGuard or R8, please follow the guides listed below to make sure your app works correctly after obfuscation:
+`Octez Connect Android SDK` internally uses various libraries that may require custom ProGuard rules. If you're using ProGuard or R8, please follow the guides listed below to make sure your app works correctly after obfuscation:
 
 - [ProGuard rules for Kotlin Serialization](https://github.com/Kotlin/kotlinx.serialization#android)
 - [ProGuard rules for LazySodium](https://github.com/terl/lazysodium-java/wiki/installation#proguard)
@@ -122,14 +117,14 @@ See the list of known issues and how to fix them if you run into problems after 
 
 - `Native library (com/sun/jna/xxxxx/libjnidispatch.so) not found in resource path`
 
-    Add the `"net.java.dev.jna:jna:x.y.z@aar"` dependency **and exclude the `net.java.dev.jna` group from the Beacon dependencies**.
+    Add the `"net.java.dev.jna:jna:x.y.z@aar"` dependency **and exclude the `net.java.dev.jna` group from the Octez Connect dependencies**.
   
     #### Groovy
     ```groovy
     def withoutJna = { exclude group: "net.java.dev.jna" }
     
-    implementation "com.github.airgap-it.beacon-android-sdk:core:$beacon_version", withoutJna
-    implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beacon_version", withoutJna 
+    implementation "it.tezosx:octez-connect-core:$octezConnectVersion", withoutJna
+    implementation "it.tezosx:octez-connect-client-wallet:$octezConnectVersion", withoutJna 
     ...
   
     def jna_version = "5.9.0"
@@ -143,8 +138,8 @@ See the list of known issues and how to fix them if you run into problems after 
         exclude(group = "net.java.dev.jna")
     }
     
-    implementation("com.github.airgap-it.beacon-android-sdk:core:$beaconVersion") { withoutJna() }
-    implementation("com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion") { withoutJna() }
+    implementation("it.tezosx:octez-connect-core:$octezConnectVersion") { excludeJna() }
+    implementation("it.tezosx:octez-connect-client-wallet:$octezConnectVersion") { excludeJna() }
     ...
     
     val jnaVersion = "5.9.0"
@@ -152,9 +147,47 @@ See the list of known issues and how to fix them if you run into problems after 
     implementation("net.java.dev.jna:jna:$jnaVersion@aar")
     ```
 
+## Quickstart
+
+The snippets below show how to quickly setup a wallet listening for incoming Octez Connect messages in Kotlin with coroutines.
+
+### Create a wallet client and listen for incoming requests
+
+```kotlin
+import it.tezosx.octezconnect.blockchain.substrate.substrate
+import it.tezosx.octezconnect.blockchain.tezos.tezos
+import it.tezosx.octezconnect.client.wallet.BeaconWalletClient
+import it.tezosx.octezconnect.transport.p2p.matrix.p2pMatrix
+
+class MainActivity : AppCompatActivity() {
+  lateinit var client: BeaconWalletClient
+
+  // ...
+
+  suspend fun listenForMessages() {
+    // create a wallet client that can listen for Substrate and Tezos messages via Matrix network 
+    client = BeaconWalletClient("My App") {
+        support(substrate(), tezos())    
+        use(p2pMatrix())
+    }
+
+    myCoroutineScope.launch {
+      // subscribe to a message Flow
+      client.connect().collect { /* process messages */ }
+    }
+  }
+}
+```
+
+For more examples or examples of how to use the SDK without coroutines or in Java, please see the `demo` app.
+
+## Migration from Beacon Android SDK
+
+If you're migrating from the Beacon Android SDK (maintained by AirGap/Papers), please see the [Migration Guide](docs/migration-android.md) for detailed instructions on updating dependencies, imports, and configuration.
+
 ## Documentation
 
-The documentation can be found [here](https://docs.walletbeacon.io/).
+For detailed documentation, see the [Octez Connect documentation](https://github.com/trilitech/octez-connect).
 
 ## Project Overview
 
@@ -170,12 +203,12 @@ Core modules are the basis for other modules. They are required for the SDK to w
 
 ### Client
 
-Client modules ship with Beacon implementations for different parts of the network.
+Client modules ship with Octez Connect implementations for different parts of the network.
 
 | Module                  | Description                                                                                                                                | Dependencies                    | Required by             |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | ----------------------- |
-| `:client-dapp`          | Beacon implementation for dApps                                                                                                            | `:core`                         | ✖️                      |
-| `:client-wallet`        | Beacon implementation for wallets                                                                                                          | `:core`                         | `:client-wallet-compat` |
+| `:client-dapp`          | Octez Connect implementation for dApps                                                                                                            | `:core`                         | ✖️                      |
+| `:client-wallet`        | Octez Connect implementation for wallets                                                                                                          | `:core`                         | `:client-wallet-compat` |
 | `:client-wallet-compat` | Provides a supplementary interface for `:client-wallet` for use without [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) | `:core` <br /> `:client-wallet` | ✖️                      |
 
 ### Blockchain
@@ -189,11 +222,11 @@ Blockchain modules provide support for different blockchains.
 
 ### Transport
 
-Transport modules provide various interfaces used to establish connection between Beacon clients.
+Transport modules provide various interfaces used to establish connection between Octez Connect clients.
 
 | Module                  | Description                                                                              | Dependencies | Required by |
 | ----------------------- | ---------------------------------------------------------------------------------------- | ------------ | ----------- |
-| `:transport-p2p-matrix` | Beacon P2P implementation which uses [Matrix](https://matrix.org/) for the communication | `:core`      | ✖️          |
+| `:transport-p2p-matrix` | Octez Connect P2P implementation which uses [Matrix](https://matrix.org/) for the communication | `:core`      | ✖️          |
 
 ### Demo
 
@@ -205,25 +238,25 @@ Demo modules provide examples of how to use the library.
 
 ## Examples
 
-The snippets below show how to quickly setup a wallet listening for incoming Beacon messages in Kotlin with coroutines. 
+The snippets below show how to quickly setup a wallet listening for incoming Octez Connect messages in Kotlin with coroutines. 
 
-For more examples or examples of how to use the SDK without coroutines or in Java, please see our `demo` app (WIP).
+For more examples or examples of how to use the SDK without coroutines or in Java, please see our `demo` app.
 
-### Create a Beacon wallet client and listen for incoming requests
+### Create a wallet client and listen for incoming requests
 
 ```kotlin
-import it.airgap.beaconsdk.blockchain.substrate.substrate
-import it.airgap.beaconsdk.blockchain.tezos.tezos
-import it.airgap.beaconsdk.client.wallet.BeaconWalletClient
-import it.airgap.beaconsdk.transport.p2p.matrix.p2pMatrix
+import it.tezosx.octezconnect.blockchain.substrate.substrate
+import it.tezosx.octezconnect.blockchain.tezos.tezos
+import it.tezosx.octezconnect.client.wallet.BeaconWalletClient
+import it.tezosx.octezconnect.transport.p2p.matrix.p2pMatrix
 
 class MainActivity : AppCompatActivity() {
   lateinit var client: BeaconWalletClient
 
   // ...
 
-  suspend fun listenForBeaconMessages() {
-    // create a wallet Beacon client that can listen for Substrate and Tezos messages via Matrix network 
+  suspend fun listenForMessages() {
+    // create a wallet client that can listen for Substrate and Tezos messages via Matrix network 
     client = BeaconWalletClient("My App") {
         support(substrate(), tezos())    
         use(p2pMatrix())
@@ -237,103 +270,9 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-## Migration
-
-See the below guides to learn how to migrate your existing code to new `Beacon Android SDK` versions.
-
-### From <v3.0.0
-
-As of `v3.0.0`, not only has `Beacon Android SDK` been further split into new modules, it has also become more generic in terms of supported blockchains and transports.
-This means that in some parts the values that had been previously set by default now must be configured manually or that various structures have changed their location or definition.
-To make sure your existing Beacon integration will be set up the same way as it used to be before `v3.0.0` do the following:
-
-1. Remove the old dependency and add `core`, `client-wallet`, `blockchain-tezos` and `transport-p2p-matrix` modules.
-
-```groovy
-def beaconVersion = "3.0.0"
-
-/* <v3.0.0: implementation "com.github.airgap-it:beacon-android-sdk:$beaconVersion" */
-
-implementation "com.github.airgap-it.beacon-android-sdk:core:$beaconVersion"
-
-implementation "com.github.airgap-it.beacon-android-sdk:client-wallet:$beaconVersion"
-implementation "com.github.airgap-it.beacon-android-sdk:blockchain-tezos:$beaconVersion"
-implementation "com.github.airgap-it.beacon-android-sdk:transport-p2p-matrix:$beaconVersion"
-```
-
-2. Replace the old `BeaconClient` with the new `BeaconWalletClient` (`client-wallet`) and configure it with `Tezos` blockchain (`blockchain-tezos`) and `P2pMatrix` transport (`transport-p2p-matrix`).
-```kotlin
-import it.airgap.beaconsdk.blockchain.tezos.tezos
-import it.airgap.beaconsdk.client.wallet.BeaconWalletClient
-import it.airgap.beaconsdk.core.data.P2P
-import it.airgap.beaconsdk.transport.p2p.matrix.p2pMatrix
-
-/* <v3.0.0: val client = BeaconClient("MyApp") */
-val client = BeaconWalletClient("MyApp") {
-    support(tezos())    
-    use(P2P(p2pMatrix())) 
-}
-```
-
-3. Adjust the message handling code.
-```kotlin
-/* <v3.0.0:
- * when (beaconRequest) {
- *    is PermissionBeaconRequest -> { ... }
- *    is OperationBeaconRequest -> { ... }
- *    is SignPayloadBeaconRequest -> { ... }
- *    is BroadcastBeaconRequest -> { ... } 
- * }
- */
-
-import it.airgap.beaconsdk.blockchain.tezos.message.request.PermissionTezosRequest
-import it.airgap.beaconsdk.blockchain.tezos.message.request.BroadcastTezosRequest
-import it.airgap.beaconsdk.blockchain.tezos.message.request.OperationTezosRequest
-import it.airgap.beaconsdk.blockchain.tezos.message.request.SignPayloadTezosRequest
-
-when (beaconRequest) {
-    is PermissionTezosRequest -> { /* ... */ }
-    is OperationTezosRequest -> { /* ... */ }
-    is SignPayloadTezosRequest -> { /* ... */ }
-    is BroadcastTezosRequest -> { /* ... */ }
-    else -> { /* ... */ }
-}
-```
-
-```kotlin
-/* <v3.0.0:
- * val response = OperationBeaconResponse.from(
- *    operationRequest, //: OperationBeaconRequest 
- *    transactionHash,
- * ) 
- */
-import it.airgap.beaconsdk.blockchain.tezos.message.response.OperationTezosResponse
-        
-val response = OperationTezosResponse.from(
-    blockchainBeaconRequest, //: OperationTezosRequest 
-    transactionHash,
-)
-```
-```kotlin
-/* <v3.0.0:
- * val errorResponse = ErrorBeaconResponse.from(
- *    broadcastRequest, //: BroadcastBeaconRequest 
- *    BeaconError.BroadcastError,
- * ) 
- */
-
-import it.airgap.beaconsdk.blockchain.tezos.data.TezosError
-
-val errorResponse = ErrorBeaconResponse.from(
-    broadcastRequest, //: BroadcastTezosRequest
-    TezosError.BroadcastError,
-)
-```
-
 ## Development
 
 The project is built with [Gradle](https://gradle.org/).
-
 
 ### Product Flavors
 There are the following product flavors configured:
@@ -374,12 +313,10 @@ $ ./gradlew testMock{Release|Debug}UnitTest
 ---
 ## Related Projects
 
-### AirGap Projects
+### Octez Connect Projects
 
-[Beacon SDK](https://github.com/airgap-it/beacon-sdk) - an SDK for web developers
-
-[Beacon iOS SDK](https://github.com/airgap-it/beacon-ios-sdk) - an SDK for iOS developers
+[Octez Connect Web SDK](https://github.com/trilitech/octez-connect-sdk) - an SDK for web developers
 
 ### Community Projects
 
-[Beacon Flutter SDK](https://github.com/TalaoDAO/beacon) - an SDK for Flutter developers
+[Beacon Flutter SDK](https://github.com/TalaoDAO/beacon) - an SDK for Flutter developers (community maintained)

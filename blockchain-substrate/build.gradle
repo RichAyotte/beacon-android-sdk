@@ -1,6 +1,6 @@
-import it.airgap.beaconsdk.build.Android
-import it.airgap.beaconsdk.build.Dependencies
-import it.airgap.beaconsdk.build.TestDependencies
+import it.tezosx.octezconnect.build.Android
+import it.tezosx.octezconnect.build.Dependencies
+import it.tezosx.octezconnect.build.TestDependencies
 
 plugins {
     id 'com.android.library'
@@ -71,8 +71,8 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.prodRelease
 
-                groupId = Android.namespace
-                artifactId = 'blockchain-substrate'
+                groupId = 'it.tezosx'
+                artifactId = 'octez-connect-blockchain-substrate'
                 version = Android.versionName
             }
         }

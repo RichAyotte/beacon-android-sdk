@@ -1,13 +1,13 @@
 
-import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateAccount
-import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateAppMetadata
-import it.airgap.beaconsdk.blockchain.substrate.data.SubstrateNetwork
-import it.airgap.beaconsdk.blockchain.substrate.data.SubstratePermission
-import it.airgap.beaconsdk.blockchain.substrate.message.request.PermissionSubstrateRequest
-import it.airgap.beaconsdk.blockchain.substrate.message.response.PermissionSubstrateResponse
-import it.airgap.beaconsdk.core.data.Connection
-import it.airgap.beaconsdk.core.internal.blockchain.MockBlockchain
-import it.airgap.beaconsdk.core.internal.utils.failWith
+import it.tezosx.octezconnect.blockchain.substrate.data.SubstrateAccount
+import it.tezosx.octezconnect.blockchain.substrate.data.SubstrateAppMetadata
+import it.tezosx.octezconnect.blockchain.substrate.data.SubstrateNetwork
+import it.tezosx.octezconnect.blockchain.substrate.data.SubstratePermission
+import it.tezosx.octezconnect.blockchain.substrate.message.request.PermissionSubstrateRequest
+import it.tezosx.octezconnect.blockchain.substrate.message.response.PermissionSubstrateResponse
+import it.tezosx.octezconnect.core.data.Connection
+import it.tezosx.octezconnect.core.internal.blockchain.MockBlockchain
+import it.tezosx.octezconnect.core.internal.utils.failWith
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
