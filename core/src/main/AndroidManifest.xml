@@ -7,8 +7,8 @@
 
     <application>
         <provider
-            android:name="it.airgap.beaconsdk.core.provider.BeaconInitProvider"
-            android:authorities="${applicationId}.beaconinitprovider"
+            android:name="io.tezos.octezconnect.core.provider.BeaconInitProvider"
+            android:authorities="${applicationId}.octezconnectinitprovider"
             android:exported="false" />
     </application>
 
